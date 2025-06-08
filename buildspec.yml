@@ -3,11 +3,16 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.11
+      nodejs: 18
+    commands:
+      - echo Installing dependencies
+      - cd lambda
+      - npm install  # only needed if you use dependencies
   build:
     commands:
-      - echo "Zipping lambda code"
-      - zip -r build_output.zip lambda/
+      - echo "Zipping Lambda function"
+      - zip -r ../lambda.zip .
+
 artifacts:
   files:
-    - build_output.zip
+    - lambda.zip
